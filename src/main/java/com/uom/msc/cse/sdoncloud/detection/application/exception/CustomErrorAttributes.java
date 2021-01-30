@@ -1,11 +1,10 @@
 
 package com.uom.msc.cse.sdoncloud.detection.application.exception;
 
-import com.adl.et.telco.dte.template.baseapp.application.alarm.AlarmGen;
-import com.adl.et.telco.dte.template.baseapp.application.exception.type.BaseException;
-import com.adl.et.telco.dte.template.baseapp.application.exception.type.ValidationException;
-import com.adl.et.telco.dte.template.baseapp.application.validator.RequestEntityInterface;
-import com.adl.et.telco.dte.plugin.alarming.dto.AlarmDef;
+
+import com.uom.msc.cse.sdoncloud.detection.application.exception.type.BaseException;
+import com.uom.msc.cse.sdoncloud.detection.application.exception.type.ValidationException;
+import com.uom.msc.cse.sdoncloud.detection.application.validator.RequestEntityInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.stereotype.Component;
@@ -23,8 +22,6 @@ import java.util.Set;
 @Component
 public class CustomErrorAttributes extends DefaultErrorAttributes {
 
-    @Autowired
-    AlarmGen alarm;
     @Override
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
         Throwable error = getError(webRequest);
@@ -38,7 +35,7 @@ public class CustomErrorAttributes extends DefaultErrorAttributes {
             case "FilterException":
             case "DomainException":
             case "WebClientException":
-                return handleRecoverableException((BaseException)error, includeStackTrace);
+                return handleRecoverableException((BaseException) error, includeStackTrace);
             default:
                 return handleGenericException(error, includeStackTrace);
         }
@@ -58,7 +55,6 @@ public class CustomErrorAttributes extends DefaultErrorAttributes {
         errorDetails.put("type", error.getClass().getSimpleName());
         errorDetails.put("message", this.formatValidationErrors(error.getErrors()));
 
-        alarm.alert(AlarmDef.MessageType.FUNCTIONAL,error.getMessage());
         return errorDetails;
     }
 
@@ -80,11 +76,6 @@ public class CustomErrorAttributes extends DefaultErrorAttributes {
             errorDetails.put("trace", this.getStackTrace(error));
         }
 
-        if(error.getClass().getSimpleName().equals("WebClientException")){
-            alarm.alert(AlarmDef.MessageType.API ,error.getMessage());
-        }else {
-            alarm.alert(AlarmDef.MessageType.FUNCTIONAL ,error.getMessage());
-        }
         return errorDetails;
     }
 
@@ -107,7 +98,6 @@ public class CustomErrorAttributes extends DefaultErrorAttributes {
             errorDetails.put("trace", this.getStackTrace(error));
         }
 
-        alarm.alert(AlarmDef.MessageType.FUNCTIONAL,error.getMessage());
         return errorDetails;
     }
 

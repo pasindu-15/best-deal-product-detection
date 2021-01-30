@@ -1,7 +1,7 @@
 
 package com.uom.msc.cse.sdoncloud.detection.domain.exception;
 
-import com.adl.et.telco.dte.template.baseapp.application.exception.type.BaseException;
+import com.uom.msc.cse.sdoncloud.detection.application.exception.type.BaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
