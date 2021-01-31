@@ -13,5 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SampleRequestEntity implements RequestEntityInterface {
     private Integer id;
+    private String image;
 
 }

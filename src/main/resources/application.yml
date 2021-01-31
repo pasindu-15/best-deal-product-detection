@@ -2,3 +2,5 @@ server:
   port: 8085
 base-url:
   context: /sample/v1
+log:
+  identifierKey: UUID

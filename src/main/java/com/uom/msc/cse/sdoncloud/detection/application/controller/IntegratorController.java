@@ -37,9 +37,11 @@ public class IntegratorController extends BaseController {
 
     @PostMapping(value="/action", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> integration(@Validated @RequestBody(required = true) SampleRequestEntity sampleRequestEntity, HttpServletRequest request)throws Exception{
+        Integer a = sampleRequestEntity.getId();
+        String image = sampleRequestEntity.getImage();
 
 //        TODO: set UUID
-        setLogIdentifier(request);
+        /*setLogIdentifier(request);
 //        TODO: validate the request
         validator.validate(sampleRequestEntity);
 //        logger.info("Request validation success");
@@ -53,8 +55,15 @@ public class IntegratorController extends BaseController {
 //        TODO: transform domain response
         Map trResponse = responseEntityTransformer.transform(sampleDomainResponseEntity,sampleResponseTransformer);
 //        logger.info("Transformed response : "+trResponse.toString());
-
+*/
 //        TODO: return response
-         return ResponseEntity.status(HttpStatus.OK).body(trResponse);
+        return ResponseEntity.status(HttpStatus.OK).body(a);
+         //return ResponseEntity.status(HttpStatus.OK).body(trResponse);
     }
+
+    @GetMapping(value="/moda-pasiya")
+    public String moda_pasiya(){
+        return "<marquee><h1>Moda Pasiya<h1></marquee>";
+    }
+
 }
