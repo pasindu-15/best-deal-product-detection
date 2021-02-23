@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hale-badge-264308",
+  "private_key_id": "cb46feca62b1466741d28f9a324762e6f969219a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDqIVtK461u8LoO\n1yGxptt8p8chbwJxC1TRjland+dELUAxXtTgG2rBi6/10zXmThcvPBldsHg3adI3\nntEHuJgW3EMksCQyPTjKS1rFbClmbkPElEsJ+HA8cFurzn2AfGBd6rfRMozJSrfD\nXzFIYyiWqXy4icajy+4xvnyslVm7x9WytzSXkkCJl7CcmkASavt7NtJLZv2FXLa6\noeurQS1E9M3c+rc68v2gE3WZw5dBQwtgp4TD8J6ytO5KDpyl1QMC3vY8ke/5gB2l\nJrGvvJJADqSsxTkgbffRAlm1wYoTcBg2J3n8yBv6D236vXBA2bnX6d7JV3PSUknM\nv69m82otAgMBAAECggEAA9+b50wHf0WfymWQQuRoDrKm5nxz7aNamqHweJJRAu19\nuaNgQbnqZPvW5CoDowUJOKiVodlsz7viNLXdrvNEnuIzgSyh2KvvH9epz4jX0YBD\nAkJS0H4p+zH/rkK7DFBidsNOmbksn5rrGeIeClzLm9x/ef0binOyA+QrI17QLn1a\nh18Ter1LxyjEg3ds6Nv7aBt70kEmmh9FabeJbZanWXZpWi3iP1hvilLVuMYkaMhb\nqCAVwozGV85USAnuR84fpfV2yZMmvtMLRLskABFv/8ocSEOx5fu/EwpPnA1RrPLY\nixejd2T9tv9Cu306K1LmzJrscRbguLoFl61MBDen6QKBgQD5DlWqYUv7j3vrLLn6\n9yFt3vXHqdXCq1ff3+fk2u26k4DLtxMwu69EzsnprGBpVY+qqCAorMRGPkjAFieF\ncsXwzKLFY7fa9Ys9t09IzW2v472LYEwEx1AEzAszZ5MX8b0Jq9EHDZB5FlhxQ5Ju\nKPgxw2jJ9M2EQvimDRJ8ALIK5QKBgQDwqHz2sCjAeNQhdrzS8LIG8t9eZKh2G/ti\n/Lzxl++Wyk0JCGTqfmUZYitBSp+FTGH+ceAatz8F+ZsWF4UHy/YdHMSaYM4zeqaG\nJKPTFVJ4DvcvDNkGnn+gE+0jgSN420Zy9blOJyA8XMjvq6rSvdke5HZyB+A4BTqE\nH1ONWmjFqQKBgQD20Fje72swUoJ4jiuE5THwwzsI8msPb2Q3TZputvNOqezCdZyD\n+At6gf+hHh2xZYRpmBG+nXApOII6MfpaimJU/0bznJ3QVPP3ZlkhCcwAug3WOMk9\nFxRanKcg+yzPVtaC5g3REoUxKo7dOBy+JMXJ8yA+u+aLgx8M1/mQf9PxbQKBgFF7\n2wPz1XiF8N17xKdvk/fCWFsvndKP2uhDRv5OQXM/ACJk0zaKoVSc5qRuzeBmYm+y\nwvyIuzAcuaQbRpHDP4vP58mVqXvItYWJ9mZMO+Ymuw8VPI5/MBtVY9+3o/kR1aKr\nDJknqkSF7gsohuhgG5nYJTqq7AJL0upVaQbda8gxAoGAFy5Aq04/+HN4ob8t6LJr\nC81xvO3YOf7gOawDpcUVpSBeemCfuqjNlDXO4jHUH2TT0DOmUIPPI/fALmS7aIpU\nMquCSpGzPmFcfzIXcJegMd9dv8fVVkboqBNvlFh2H3fmVoK0/aesPCIL+UCgFbHX\nMxAOQ7zgxQ0Eb3HgixLvb1g=\n-----END PRIVATE KEY-----\n",
+  "client_email": "best-deal@hale-badge-264308.iam.gserviceaccount.com",
+  "client_id": "102875894629873158534",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/best-deal%40hale-badge-264308.iam.gserviceaccount.com"
+}

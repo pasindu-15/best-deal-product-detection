@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SampleRequestEntity implements RequestEntityInterface {
-    private Integer id;
+public class ProductDetectRequestEntity implements RequestEntityInterface {
+    private String image;
 
 }

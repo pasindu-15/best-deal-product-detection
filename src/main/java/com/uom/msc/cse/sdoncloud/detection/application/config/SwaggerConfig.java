@@ -33,7 +33,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo()).pathProvider(new BasePathAwareRelativePathProvider(context));
     }
     private ApiInfo apiInfo() {
-        String title ="Best Deal Application";
+        String title ="Best Deal Application : Product Detection";
         return new ApiInfo(
                 title,
                 "Welcome to Best Deal Application Platform",

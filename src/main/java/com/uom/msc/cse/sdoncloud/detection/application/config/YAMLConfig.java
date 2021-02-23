@@ -17,4 +17,5 @@ public class YAMLConfig {
     @Value("${log.identifierKey}")
     private String logIdentifierKey;
 
+
 }

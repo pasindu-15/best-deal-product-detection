@@ -2,7 +2,7 @@
 package com.uom.msc.cse.sdoncloud.detection.application.controller;
 
 import com.uom.msc.cse.sdoncloud.detection.application.transformer.ResponseEntityTransformer;
-import com.uom.msc.cse.sdoncloud.detection.application.transport.request.entities.SampleRequestEntity;
+import com.uom.msc.cse.sdoncloud.detection.application.transport.request.entities.ProductDetectRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.application.transport.response.transformers.SampleResponseTransformer;
 import com.uom.msc.cse.sdoncloud.detection.application.validator.RequestEntityValidator;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainRequestEntity;
@@ -23,7 +23,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("${base-url.context}")
 @Log4j2
-public class IntegratorController extends BaseController {
+public class DetectorController extends BaseController {
+    @Autowired
     SampleManageService sampleManageService;
 
     @Autowired
@@ -35,17 +36,17 @@ public class IntegratorController extends BaseController {
     @Autowired
     private RequestEntityValidator validator;
 
-    @PostMapping(value="/action", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> integration(@Validated @RequestBody(required = true) SampleRequestEntity sampleRequestEntity, HttpServletRequest request)throws Exception{
+    @PostMapping(value="/detect", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> detect(@Validated @RequestBody(required = true) ProductDetectRequestEntity productDetectRequestEntity, HttpServletRequest request)throws Exception{
 
 //        TODO: set UUID
         setLogIdentifier(request);
 //        TODO: validate the request
-        validator.validate(sampleRequestEntity);
+        validator.validate(productDetectRequestEntity);
 //        logger.info("Request validation success");
 
 //        TODO: request object map to domain entity object
-        SampleDomainRequestEntity sampleDomainRequestEntity = new ModelMapper().map(sampleRequestEntity, SampleDomainRequestEntity.class);
+        SampleDomainRequestEntity sampleDomainRequestEntity = new ModelMapper().map(productDetectRequestEntity, SampleDomainRequestEntity.class);
 
 //        TODO: call domain business logic
         SampleDomainResponseEntity sampleDomainResponseEntity = sampleManageService.process(sampleDomainRequestEntity);
