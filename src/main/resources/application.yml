@@ -11,8 +11,17 @@ spring:
     gcp:
       core:
         enabled: true
+    function:
+      scan:
+        packages: com.uom.msc.cse.sdoncloud.detection.application.function
+
+info:
+  data:
+    temp-img:
+      location: "/Users/pasindu/Documents/Msc/Sem 1/Software Development on Cloud Platforms/Project/temp-images/"
 
 spring.cloud.gcp.project-id: hale-badge-264308
 spring.cloud.gcp.credentials.location: file:/Users/pasindu/Documents/Msc/Sem 1/Software Development on Cloud Platforms/Project/best-deal-product-detection/src/main/resources/google-addon-cb46feca62b1.json
 #spring.cloud.gcp.credentials.location: file:/Users/pasindu/Downloads/google-addon-cb46feca62b1.json
 spring.cloud.gcp.credentials.scopes: "https://www.googleapis.com/auth/cloud-vision"
+

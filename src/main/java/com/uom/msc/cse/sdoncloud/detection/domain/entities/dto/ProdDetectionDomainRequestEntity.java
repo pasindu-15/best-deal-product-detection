@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SampleDomainRequestEntity {
+public class ProdDetectionDomainRequestEntity {
 
-    private Integer id;
+    private String imageBase64;
 }

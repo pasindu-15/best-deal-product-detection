@@ -13,6 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductDetectRequestEntity implements RequestEntityInterface {
 
-    private String image;
+    private String imageBase64;
 
 }
