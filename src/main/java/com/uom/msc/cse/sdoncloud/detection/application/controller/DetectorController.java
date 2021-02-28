@@ -7,7 +7,7 @@ import com.uom.msc.cse.sdoncloud.detection.application.transport.response.transf
 import com.uom.msc.cse.sdoncloud.detection.application.validator.RequestEntityValidator;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainResponseEntity;
-import com.uom.msc.cse.sdoncloud.detection.domain.service.SampleManageService;
+import com.uom.msc.cse.sdoncloud.detection.domain.service.ProductManageService;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import java.util.Map;
 @Log4j2
 public class DetectorController extends BaseController {
     @Autowired
-    SampleManageService sampleManageService;
+    ProductManageService productManageService;
 
     @Autowired
     ResponseEntityTransformer responseEntityTransformer;
@@ -49,7 +49,7 @@ public class DetectorController extends BaseController {
         SampleDomainRequestEntity sampleDomainRequestEntity = new ModelMapper().map(productDetectRequestEntity, SampleDomainRequestEntity.class);
 
 //        TODO: call domain business logic
-        SampleDomainResponseEntity sampleDomainResponseEntity = sampleManageService.process(sampleDomainRequestEntity);
+        SampleDomainResponseEntity sampleDomainResponseEntity = productManageService.process(sampleDomainRequestEntity);
 
 //        TODO: transform domain response
         Map trResponse = responseEntityTransformer.transform(sampleDomainResponseEntity,sampleResponseTransformer);

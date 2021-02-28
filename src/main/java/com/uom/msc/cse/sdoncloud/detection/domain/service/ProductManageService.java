@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
-public class SampleManageService {
+public class ProductManageService {
     @Autowired
     SampleDomainResponseEntity sampleDomainResponseEntity;
 
