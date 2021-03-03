@@ -98,10 +98,20 @@
 	</repositories>
 
 	<build>
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>2.3.0</version>
+				<configuration>
+					<projectId>hale-badge-264308</projectId>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
