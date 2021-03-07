@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface LabelDetectionInterface {
 
-    public List<String> detectLabel(List<String> images);
+    public String detectLabel(String imgPath);
 }

@@ -8,15 +8,17 @@ import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @Component
-public class SampleDomainResponseEntity {
+public class ProductDetectDomainResponseEntity {
     String resCode;
     String resDesc;
-    String errorMessage;
+    List<String> features;
 
 
 }

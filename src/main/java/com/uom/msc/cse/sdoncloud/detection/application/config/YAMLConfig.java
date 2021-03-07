@@ -17,5 +17,8 @@ public class YAMLConfig {
     @Value("${log.identifierKey}")
     private String logIdentifierKey;
 
+    @Value("${info.data.temp-img.location}")
+    private String tempImgDir;
+
 
 }

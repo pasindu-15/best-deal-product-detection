@@ -3,10 +3,10 @@ package com.uom.msc.cse.sdoncloud.detection.application.controller;
 
 import com.uom.msc.cse.sdoncloud.detection.application.transformer.ResponseEntityTransformer;
 import com.uom.msc.cse.sdoncloud.detection.application.transport.request.entities.ProductDetectRequestEntity;
-import com.uom.msc.cse.sdoncloud.detection.application.transport.response.transformers.SampleResponseTransformer;
+import com.uom.msc.cse.sdoncloud.detection.application.transport.response.transformers.ProductDetectionResponseTransformer;
 import com.uom.msc.cse.sdoncloud.detection.application.validator.RequestEntityValidator;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProductDetectDomainRequestEntity;
-import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainResponseEntity;
+import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProductDetectDomainResponseEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.service.ProductManageService;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -21,9 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
-@RequestMapping("${base-url.context}")
+@RequestMapping("${base-url.context}/vision")
 @Log4j2
-public class DetectorController extends BaseController {
+public class VisionController extends BaseController {
     @Autowired
     ProductManageService productManageService;
 
@@ -31,12 +31,12 @@ public class DetectorController extends BaseController {
     ResponseEntityTransformer responseEntityTransformer;
 
     @Autowired
-    SampleResponseTransformer sampleResponseTransformer;
+    ProductDetectionResponseTransformer productDetectionResponseTransformer;
 
     @Autowired
     private RequestEntityValidator validator;
 
-    @PostMapping(value="/detect", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value="/product-detect", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map> detect(@Validated @RequestBody(required = true) ProductDetectRequestEntity productDetectRequestEntity, HttpServletRequest request)throws Exception{
 
 //        TODO: set UUID
@@ -49,10 +49,10 @@ public class DetectorController extends BaseController {
         ProductDetectDomainRequestEntity productDetectDomainRequestEntity = new ModelMapper().map(productDetectRequestEntity, ProductDetectDomainRequestEntity.class);
 
 //        TODO: call domain business logic
-        SampleDomainResponseEntity sampleDomainResponseEntity = productManageService.process(productDetectDomainRequestEntity);
+        ProductDetectDomainResponseEntity productDetectDomainResponseEntity = productManageService.process(productDetectDomainRequestEntity);
 
 //        TODO: transform domain response
-        Map trResponse = responseEntityTransformer.transform(sampleDomainResponseEntity,sampleResponseTransformer);
+        Map trResponse = responseEntityTransformer.transform(productDetectDomainResponseEntity, productDetectionResponseTransformer);
 //        logger.info("Transformed response : "+trResponse.toString());
 
 //        TODO: return response
