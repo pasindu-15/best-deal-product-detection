@@ -5,7 +5,6 @@ import com.uom.msc.cse.sdoncloud.detection.domain.boundary.ImageHandlerInterface
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.LabelDetectionInterface;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProdDetectionDomainRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainResponseEntity;
-import com.uom.msc.cse.sdoncloud.detection.external.OfferMatcherService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,7 @@ public class ProductManageService {
     @Autowired
     LabelDetectionInterface labelDetectionInterface;
 
-    @Autowired
-    OfferMatcherService offerMatcherService;
+
 
     @Autowired
     ImageHandlerInterface imageHandlerInterface;
