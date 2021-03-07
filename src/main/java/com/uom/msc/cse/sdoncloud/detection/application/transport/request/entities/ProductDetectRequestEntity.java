@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDetectRequestEntity implements RequestEntityInterface {
 
-    private String image;
+    private List<String> imagesBase64;
 
 }

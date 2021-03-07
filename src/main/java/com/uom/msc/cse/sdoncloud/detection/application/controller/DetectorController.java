@@ -5,7 +5,7 @@ import com.uom.msc.cse.sdoncloud.detection.application.transformer.ResponseEntit
 import com.uom.msc.cse.sdoncloud.detection.application.transport.request.entities.ProductDetectRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.application.transport.response.transformers.SampleResponseTransformer;
 import com.uom.msc.cse.sdoncloud.detection.application.validator.RequestEntityValidator;
-import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainRequestEntity;
+import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProductDetectDomainRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainResponseEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.service.ProductManageService;
 import lombok.extern.log4j.Log4j2;
@@ -37,7 +37,7 @@ public class DetectorController extends BaseController {
     private RequestEntityValidator validator;
 
     @PostMapping(value="/detect", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> detect(@Validated @RequestBody(required = true) ProductDetectRequestEntity productDetectRequestEntity, HttpServletRequest request)throws Exception{
+    public ResponseEntity<Map> detect(@Validated @RequestBody(required = true) ProductDetectRequestEntity productDetectRequestEntity, HttpServletRequest request)throws Exception{
 
 //        TODO: set UUID
         setLogIdentifier(request);
@@ -46,10 +46,10 @@ public class DetectorController extends BaseController {
 //        logger.info("Request validation success");
 
 //        TODO: request object map to domain entity object
-        SampleDomainRequestEntity sampleDomainRequestEntity = new ModelMapper().map(productDetectRequestEntity, SampleDomainRequestEntity.class);
+        ProductDetectDomainRequestEntity productDetectDomainRequestEntity = new ModelMapper().map(productDetectRequestEntity, ProductDetectDomainRequestEntity.class);
 
 //        TODO: call domain business logic
-        SampleDomainResponseEntity sampleDomainResponseEntity = productManageService.process(sampleDomainRequestEntity);
+        SampleDomainResponseEntity sampleDomainResponseEntity = productManageService.process(productDetectDomainRequestEntity);
 
 //        TODO: transform domain response
         Map trResponse = responseEntityTransformer.transform(sampleDomainResponseEntity,sampleResponseTransformer);

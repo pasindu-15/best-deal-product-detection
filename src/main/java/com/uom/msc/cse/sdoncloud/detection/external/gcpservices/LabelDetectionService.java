@@ -20,13 +20,16 @@ public class LabelDetectionService implements LabelDetectionInterface {
     private CloudVisionTemplate cloudVisionTemplate;
 
 
-    public void detectLabel(){
+    public List<String> detectLabel(List<String> images){
         AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
                 this.resourceLoader.getResource("classpath:temp-images/air-max-270-shoe-62kcVV.jpg"), Feature.Type.LABEL_DETECTION);
 
         // This gets the annotations of the image from the response object.
         List<EntityAnnotation> annotations = response.getLabelAnnotationsList();
         System.out.println("Image Classification results: " + response.getLabelAnnotationsList());
+
+
+        return null;
 
     }
 

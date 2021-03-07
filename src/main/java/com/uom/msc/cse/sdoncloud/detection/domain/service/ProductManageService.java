@@ -2,7 +2,7 @@
 package com.uom.msc.cse.sdoncloud.detection.domain.service;
 
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.LabelDetectionInterface;
-import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainRequestEntity;
+import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProductDetectDomainRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.SampleDomainResponseEntity;
 import com.uom.msc.cse.sdoncloud.detection.external.OfferMatcherService;
 import lombok.extern.log4j.Log4j2;
@@ -26,12 +26,12 @@ public class ProductManageService {
      * @param
      * @return
      */
-    public SampleDomainResponseEntity process(SampleDomainRequestEntity sampleDomainRequestEntity) throws Exception{
+    public SampleDomainResponseEntity process(ProductDetectDomainRequestEntity productDetectDomainRequestEntity) throws Exception{
         log.info("INFO|START use case...| request : " );
 //        TODO: Execute business logic
 
 
-        labelDetectionInterface.detectLabel();
+        labelDetectionInterface.detectLabel(productDetectDomainRequestEntity.getImagesBase64());
 //        offerMatcherService.matchOffers();
 
 
