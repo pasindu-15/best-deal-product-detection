@@ -4,16 +4,14 @@ import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
 import com.google.cloud.vision.v1.Feature;
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.LabelDetectionInterface;
+import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.FeatureDto;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.vision.CloudVisionTemplate;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -26,9 +24,10 @@ public class LabelDetectionService implements LabelDetectionInterface {
     private CloudVisionTemplate cloudVisionTemplate;
 
 
-    public String detectLabel(String imgPath){
+    public FeatureDto detectLabel(String imgPath){
 
-        String features = "";
+        List<String> features = new ArrayList();
+        List<String> featuresParts = new ArrayList<>();
         try {
             AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
 //                this.resourceLoader.getResource("classpath:temp-images/air-max-270-shoe-62kcVV.jpg"), Feature.Type.LABEL_DETECTION);
@@ -42,18 +41,38 @@ public class LabelDetectionService implements LabelDetectionInterface {
                             .filter(f->f.getScore()>0.8)
                             .map(f->f.getDescription())
                             .collect(Collectors.toList());
-            for (String l:imageLabels) {
-                features += l+"|";
+
+            for (String f:imageLabels) {
+
+                features.add(f);
+                featuresParts.addAll(Arrays.asList(f.split(" ")));
             }
+            FeatureDto featureDto = new FeatureDto();
+            featureDto.setFeatures(features);
+
+            int max = 0;
+            int curr = 0;
+            String currKey =  null;
+            Set<String> unique = new HashSet<String>(featuresParts);
+
+            for (String key : unique) {
+                curr = Collections.frequency(featuresParts, key);
+
+                if(max < curr){
+                    max = curr;
+                    currKey = key;
+                }
+            }
+
+            featureDto.setMainFeatures(currKey);
 
             log.info("Image Classification results: {}",imageLabels);
 
-            return features.substring(0,features.length()-1);
+            return featureDto;
         }catch (Exception ex){
             log.info("Image detection error: {}", ex.getMessage() );
             return null;
         }
-
 
     }
 

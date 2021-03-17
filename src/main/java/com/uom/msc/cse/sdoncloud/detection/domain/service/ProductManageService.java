@@ -3,6 +3,7 @@ package com.uom.msc.cse.sdoncloud.detection.domain.service;
 
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.ImageHandlerInterface;
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.LabelDetectionInterface;
+import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.FeatureDto;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProductDetectDomainRequestEntity;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.ProductDetectDomainResponseEntity;
 import com.uom.msc.cse.sdoncloud.detection.external.OfferMatcherService;
@@ -39,21 +40,21 @@ public class ProductManageService {
         log.info("INFO|START use case...| request : " );
 //        TODO: Execute business logic
 
-        List<String> featuresist = productDetectDomainRequestEntity.getImagesBase64().parallelStream().map(img ->{
-            String features = null;
+        List<FeatureDto> featuresDtoList = productDetectDomainRequestEntity.getImagesBase64().parallelStream().map(img ->{
+            FeatureDto featureDto = null;
             Boolean isDeleted = null;
             try {
                 String imgPath = imageHandlerInter.decodeImage(img);
 
-//                    features = labelDetectionInterface.detectLabel(imgPath);
-                    isDeleted  = imageHandlerInter.deleteImg(imgPath);
+//                featureDto = labelDetectionInterface.detectLabel(imgPath);
+                isDeleted  = imageHandlerInter.deleteImg(imgPath);
 
-                log.info("image: {} | features: {} | imageDeleted {}",imgPath,features,isDeleted);
+                log.info("image: {} | features: {} | imageDeleted {}",imgPath,featureDto,isDeleted);
 
             } catch (IOException e) {
                 log.error("Product Detection IOException");
             }
-            return features;
+            return featureDto;
         }).collect(Collectors.toList());
 
 
@@ -62,7 +63,7 @@ public class ProductManageService {
 
 
 
-        if(featuresist.contains(null)){
+        if(featuresDtoList.contains(null)){
             productDetectDomainResponseEntity.setResCode("01");
             productDetectDomainResponseEntity.setResDesc("Something went wrong!");
         }else {
@@ -70,7 +71,7 @@ public class ProductManageService {
             productDetectDomainResponseEntity.setResDesc("Operation Success");
         }
 
-        productDetectDomainResponseEntity.setFeatures(featuresist);
+        productDetectDomainResponseEntity.setData(featuresDtoList);
 
         return productDetectDomainResponseEntity;
     }

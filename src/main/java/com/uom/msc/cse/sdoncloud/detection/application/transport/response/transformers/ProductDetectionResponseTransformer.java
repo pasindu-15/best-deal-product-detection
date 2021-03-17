@@ -15,7 +15,7 @@ public class ProductDetectionResponseTransformer implements ResponseEntityInterf
         Map<String,Object> mapping = new HashMap<>();
         mapping.put("resCode",responseEntity.getResCode());
         mapping.put("resDesc",responseEntity.getResDesc());
-        mapping.put("features",responseEntity.getFeatures());
+        mapping.put("data",responseEntity.getData());
 
         return mapping;
     }

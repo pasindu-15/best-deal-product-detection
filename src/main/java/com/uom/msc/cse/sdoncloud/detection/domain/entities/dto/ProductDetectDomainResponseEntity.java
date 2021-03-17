@@ -18,7 +18,7 @@ import java.util.List;
 public class ProductDetectDomainResponseEntity {
     String resCode;
     String resDesc;
-    List<String> features;
+    List<FeatureDto> data;
 
 
 }
