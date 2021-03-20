@@ -45,7 +45,10 @@ public class LabelDetectionService implements LabelDetectionInterface {
             for (String f:imageLabels) {
 
                 features.add(f);
-                featuresParts.addAll(Arrays.asList(f.split(" ")));
+                for (String fw: f.split(" ")) {
+                    fw = fw.substring(0,1).toUpperCase()+fw.substring(1);
+                    featuresParts.add(fw);
+                }
             }
             FeatureDto featureDto = new FeatureDto();
             featureDto.setFeatures(features);
@@ -56,7 +59,7 @@ public class LabelDetectionService implements LabelDetectionInterface {
             Set<String> unique = new HashSet<String>(featuresParts);
 
             for (String key : unique) {
-                key = key.substring(0,1).toUpperCase()+key.substring(0,1);
+//                key = key.substring(0,1).toUpperCase()+key.substring(1);
                 curr = Collections.frequency(featuresParts, key);
 
                 if(max < curr){

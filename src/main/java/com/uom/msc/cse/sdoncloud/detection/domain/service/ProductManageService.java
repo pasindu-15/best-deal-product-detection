@@ -46,7 +46,7 @@ public class ProductManageService {
             try {
                 String imgPath = imageHandlerInter.decodeImage(img);
 
-//                featureDto = labelDetectionInterface.detectLabel(imgPath);
+                featureDto = labelDetectionInterface.detectLabel(imgPath);
                 isDeleted  = imageHandlerInter.deleteImg(imgPath);
 
                 log.info("image: {} | features: {} | imageDeleted {}",imgPath,featureDto,isDeleted);
