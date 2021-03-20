@@ -9,5 +9,5 @@ import java.util.List;
 @Getter
 public class FeatureDto {
     private List<String> features;
-    private String mainFeatures;
+    private String mainFeature;
 }

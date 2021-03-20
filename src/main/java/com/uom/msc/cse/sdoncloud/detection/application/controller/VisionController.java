@@ -41,6 +41,8 @@ public class VisionController extends BaseController {
 
 //        TODO: set UUID
         setLogIdentifier(request);
+
+        log.info("Request Received : {}",productDetectRequestEntity.toString());
 //        TODO: validate the request
         validator.validate(productDetectRequestEntity);
 //        logger.info("Request validation success");

@@ -2,10 +2,7 @@
 package com.uom.msc.cse.sdoncloud.detection.application.transport.request.entities;
 
 import com.uom.msc.cse.sdoncloud.detection.application.validator.RequestEntityInterface;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ProductDetectRequestEntity implements RequestEntityInterface {
 
     private List<String> imagesBase64;

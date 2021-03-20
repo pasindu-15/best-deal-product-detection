@@ -72,6 +72,7 @@ public class ProductManageService {
         }
 
         productDetectDomainResponseEntity.setData(featuresDtoList);
+        log.info("Domain Response : {}",productDetectDomainResponseEntity.toString());
 
         return productDetectDomainResponseEntity;
     }

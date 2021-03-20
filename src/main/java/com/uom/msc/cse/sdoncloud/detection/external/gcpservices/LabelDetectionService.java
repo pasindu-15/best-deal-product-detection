@@ -68,7 +68,7 @@ public class LabelDetectionService implements LabelDetectionInterface {
                 }
             }
 
-            featureDto.setMainFeatures(currKey);
+            featureDto.setMainFeature(currKey);
 
             log.info("Image Classification results: {}",imageLabels);
 
