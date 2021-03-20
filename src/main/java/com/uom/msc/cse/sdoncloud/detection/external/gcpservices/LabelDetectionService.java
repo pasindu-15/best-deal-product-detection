@@ -56,6 +56,7 @@ public class LabelDetectionService implements LabelDetectionInterface {
             Set<String> unique = new HashSet<String>(featuresParts);
 
             for (String key : unique) {
+                key = key.substring(0,1).toUpperCase()+key.substring(0,1);
                 curr = Collections.frequency(featuresParts, key);
 
                 if(max < curr){
