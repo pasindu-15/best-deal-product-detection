@@ -3,6 +3,7 @@ package com.uom.msc.cse.sdoncloud.detection.external.gcpservices;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
 import com.google.cloud.vision.v1.EntityAnnotation;
 import com.google.cloud.vision.v1.Feature;
+import com.google.cloud.vision.v1.LocalizedObjectAnnotation;
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.LabelDetectionInterface;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.FeatureDto;
 import lombok.extern.log4j.Log4j2;
@@ -31,7 +32,8 @@ public class LabelDetectionService implements LabelDetectionInterface {
         try {
             AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
 //                this.resourceLoader.getResource("classpath:temp-images/air-max-270-shoe-62kcVV.jpg"), Feature.Type.LABEL_DETECTION);
-                    this.resourceLoader.getResource("file:"+imgPath), Feature.Type.LABEL_DETECTION);
+//                    this.resourceLoader.getResource("file:"+imgPath), Feature.Type.OBJECT_LOCALIZATION);
+                    this.resourceLoader.getResource("file:"+imgPath), Feature.Type.OBJECT_LOCALIZATION,Feature.Type.LABEL_DETECTION);
 
             // This gets the annotations of the image from the response object.
             List<EntityAnnotation> annotations = response.getLabelAnnotationsList();
@@ -41,6 +43,11 @@ public class LabelDetectionService implements LabelDetectionInterface {
                             .filter(f->f.getScore()>0.8)
                             .map(f->f.getDescription())
                             .collect(Collectors.toList());
+
+            LocalizedObjectAnnotation objects =
+                    response.getLocalizedObjectAnnotationsList().parallelStream()
+                            .max(Comparator.comparingDouble(LocalizedObjectAnnotation::getScore)).get();
+//                            .collect(Collectors.toList());
 
             for (String f:imageLabels) {
 
@@ -53,22 +60,8 @@ public class LabelDetectionService implements LabelDetectionInterface {
             FeatureDto featureDto = new FeatureDto();
             featureDto.setFeatures(features);
 
-            int max = 0;
-            int curr = 0;
-            String currKey =  null;
-            Set<String> unique = new HashSet<String>(featuresParts);
 
-            for (String key : unique) {
-//                key = key.substring(0,1).toUpperCase()+key.substring(1);
-                curr = Collections.frequency(featuresParts, key);
-
-                if(max < curr){
-                    max = curr;
-                    currKey = key;
-                }
-            }
-
-            featureDto.setMainFeature(currKey);
+            featureDto.setMainFeature(objects.getName());
 
             log.info("Image Classification results: {}",imageLabels);
 
