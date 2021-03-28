@@ -1,6 +1,7 @@
 
 package com.uom.msc.cse.sdoncloud.detection.domain.service;
 
+import com.google.protobuf.ByteString;
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.ImageHandlerInterface;
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.LabelDetectionInterface;
 import com.uom.msc.cse.sdoncloud.detection.domain.entities.dto.FeatureDto;
@@ -27,7 +28,7 @@ public class ProductManageService {
     LabelDetectionInterface labelDetectionInterface;
 
     @Autowired
-    ImageHandlerInterface imageHandlerInter;
+    ImageHandlerInterface imageHandlerInterface;
 
     @Autowired
     OfferMatcherService offerMatcherService;
@@ -44,14 +45,17 @@ public class ProductManageService {
             FeatureDto featureDto = null;
             Boolean isDeleted = null;
             try {
-                String imgPath = imageHandlerInter.decodeImage(img);
+//                String imgPath = imageHandlerInter.decodeImage(img);
+////
+////                featureDto = labelDetectionInterface.detectLabel(imgPath);
+////                isDeleted  = imageHandlerInter.deleteImg(imgPath);
 
-                featureDto = labelDetectionInterface.detectLabel(imgPath);
-                isDeleted  = imageHandlerInter.deleteImg(imgPath);
+                ByteString byteStrImg = imageHandlerInterface.decodeImageToByteString(img);
+                labelDetectionInterface.detectLabelFromByteStringImage(byteStrImg);
 
-                log.info("image: {} | features: {} | imageDeleted {}",imgPath,featureDto,isDeleted);
+//                log.info("image: {} | features: {} | imageDeleted {}",imgPath,featureDto,isDeleted);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 log.error("Product Detection IOException");
             }
             return featureDto;

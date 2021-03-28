@@ -1,5 +1,6 @@
 package com.uom.msc.cse.sdoncloud.detection.external;
 
+import com.google.protobuf.ByteString;
 import com.uom.msc.cse.sdoncloud.detection.application.config.YAMLConfig;
 import com.uom.msc.cse.sdoncloud.detection.domain.boundary.ImageHandlerInterface;
 import java.util.Base64;
@@ -62,5 +63,9 @@ public class ImageHandlerService implements ImageHandlerInterface {
         }
         return imgPath;
 
+    }
+
+    public ByteString decodeImageToByteString(String imageString) {
+        return ByteString.copyFrom(Base64.getDecoder().decode(imageString));
     }
 }
