@@ -1,0 +1,12 @@
+{
+"type": "service_account",
+"project_id": "best-deal-product-detection",
+"private_key_id": "0c425309ccea33a9291a702ceb87897f42cf3a6c",
+"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCHP+SSIpSwbrLB\nQyG9csjPTJrT3ywCyjACZyeO41dc/9EE9i30ODw9IRs8art7ryhuon+z0g99l7vA\ne0OPDtODQFi9l6UfZuwVpZUTH3XXwfKS8v1v5ZUtNZf2+SAgXdH9nT+kk5BFQecI\nvpjpZuLjKbQitUIIG5kRLy6pogTDPkOJEIjsqJe85aiu+9CmQTP82R3kQH5+2mD+\n+9d5WVkTiPHnbuVJ4FZw7qPqtnYH5wbrKd9rSomhMAVG6dPzfAP5A3i2l5OnTttz\nEbczvsackIAC6d36qfba2VSB3zyFIgkbyA/O7x+zP378+eTdIslLUp/E4PQwHARz\ncOEu7UGdAgMBAAECggEAIfXhJvCX9VVWfUCmEDPqSGMr3VeEbY7nTzMns7FSFoAF\ntAE8uL4GIjNV623BdeUdeepDtptgWGDpPAO3iwxl/+cAYVrak2/8h9L0A8E6jdqd\nVli9WoODWb7DUbhsYLQuLkh12pVS/JD3ujJhovm6rt+h47Uvx2lmnfIC/YU5POzg\nBOp7YOeTIoJX2bvnQmHOE2+oloYbE0+BVDXCnuS3QkThGiDXbzC5H+lFAJcRgS52\nPTI1B4Yd5FdOvcUKiPHpTDozpYZUJXdGFrrR+Gb7VmpSj32phWfddwarnQaTdMmb\n1FiIorc6Pe0WPhJPzUsZ/jWinUamAEP+S6t3nYd84QKBgQC79A1tLBPgaYrNxOB7\nHbAxfDWcLNZLQAM2O7Ck/JiA2WXBcStw0uhR4beYOS8TfpA+suxxT+nDk5zOFyvq\ngwbIACChWLMtGHhiIAe/vIqP5rHzea7VzF8RRF3w3bboM0S25kYYT7Qt1fGxP7Qz\nMCD2hm1rhSUfxXovLZUnlAobgwKBgQC4NyK3BFymPjyzZkCnkyDe088Ar9fxY0Pd\n6uJNLB42lA17Ze4OSco21B/yBvb8mwMIwQHITvoj2jgxQhogepgL1nuME6/62NWM\nJdkrj7TXC+ce/Ten7k1XWu3YUhvgZtF9DX2Ijwm1bK8vgqVuei9iXhpVLwmP3Boz\nnRKOxxUEXwKBgQC5z55ubYMA+pZEsvwR+tmzMk51pUX9gr0qInyRvz6tMz8LrGv7\n0CXovTMaBH5r0VWdBpoFs7Ewrn/4pqO95ecQVj/sApqwXF628191yFlbxf/q6kNU\nDgV2NpaAh1BJ4lVuU9y8MB+6qKWWS5pEeLI9xcvq3ehDrqEKfw/T3uDXLQKBgCJX\nHOCTLpZK+dPTlu/mLHV9dJRDM3UrNQaUd7U9KTCxbsX3HWaKeOi5qG7cv4QdfXZP\nTH7DwjuWvWzpTqeJUvi59fQJ439WlpB2qcJGGscPz/jl6U8jzEUhjT8LJ2kwoZK3\nRhSD3aJ1bT7lEuPCYTzsH+qLRzQLKtM+T6xQDmnvAoGAXWWfS4UYhoPf4XCypwJW\nG6FYqKHl/hQxaCihNF611lmFh+pXHhK//uJtGKXJQU/Opx59tjf/Wix70g9HoNIq\nEWKPdz6IRMHnHmTkHMJTrrxNa8JhEGvD7OLEbXmTuPJiL5FUF6QtUQGL/h8lYZkB\nqdnzUdIXQ0p6v+JZg0oEXDI=\n-----END PRIVATE KEY-----\n",
+"client_email": "gcp-vision-api-manager@best-deal-product-detection.iam.gserviceaccount.com",
+"client_id": "107015303304419815444",
+"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+"token_uri": "https://oauth2.googleapis.com/token",
+"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gcp-vision-api-manager%40best-deal-product-detection.iam.gserviceaccount.com"
+}

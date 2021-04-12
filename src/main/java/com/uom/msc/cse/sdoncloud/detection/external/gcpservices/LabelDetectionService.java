@@ -23,7 +23,7 @@ public class LabelDetectionService implements LabelDetectionInterface {
         List<String> featuresParts = new ArrayList<>();
         try {
             AnnotateImageResponse response = this.cloudVisionTemplate.analyzeImage(
-                    this.resourceLoader.getResource("file:"+imgPath), Feature.Type.LABEL_DETECTION);
+                    this.resourceLoader.getResource("file:"+imgPath), Feature.Type.LABEL_DETECTION,Feature.Type.OBJECT_LOCALIZATION);
             // This gets the annotations of the image from the response object.
             List<EntityAnnotation> annotations = response.getLabelAnnotationsList();
             List<String> imageLabels =
@@ -31,28 +31,15 @@ public class LabelDetectionService implements LabelDetectionInterface {
                             .filter(f->f.getScore()>0.8)
                             .map(f->f.getDescription())
                             .collect(Collectors.toList());
-            for (String f:imageLabels) {
-                features.add(f);
-                for (String fw: f.split(" ")) {
-                    fw = fw.substring(0,1).toUpperCase()+fw.substring(1);
-                    featuresParts.add(fw);
-                }
-            }
+
+            LocalizedObjectAnnotation object =
+                    response.getLocalizedObjectAnnotationsList().parallelStream()
+                            .max(Comparator.comparingDouble(LocalizedObjectAnnotation::getScore)).get();
             FeatureDto featureDto = new FeatureDto();
-            featureDto.setFeatures(features);
-            int max = 0;
-            int curr = 0;
-            String currKey =  null;
-            Set<String> unique = new HashSet<String>(featuresParts);
-            for (String key : unique) {
-//                key = key.substring(0,1).toUpperCase()+key.substring(1);
-                curr = Collections.frequency(featuresParts, key);
-                if(max < curr){
-                    max = curr;
-                    currKey = key;
-                }
-            }
-            featureDto.setMainFeature(currKey);
+            featureDto.setFeatures(imageLabels);
+
+
+            featureDto.setMainFeature(object.getName());
             log.info("Image Classification results: {}",imageLabels);
             return featureDto;
         }catch (Exception ex){
@@ -63,8 +50,8 @@ public class LabelDetectionService implements LabelDetectionInterface {
     public FeatureDto detectLabelFromByteStringImage(ByteString imageByteString){
         try {
             Image img = Image.newBuilder().setContent(imageByteString).build();
-            Feature.Type[] types = new Feature.Type[]{Feature.Type.OBJECT_LOCALIZATION,Feature.Type.LABEL_DETECTION};
-            List<Feature> featureList = (List)Arrays.stream(types).map((featureType) -> {
+            Feature.Type[] types = new Feature.Type[]{Feature.Type.OBJECT_LOCALIZATION,Feature.Type.LABEL_DETECTION,Feature.Type.PRODUCT_SEARCH,Feature.Type.IMAGE_PROPERTIES,Feature.Type.LOGO_DETECTION,Feature.Type.SAFE_SEARCH_DETECTION,Feature.Type.LANDMARK_DETECTION};
+            List<Feature> featureList = Arrays.asList(types).stream().map((featureType) -> {
                 return Feature.newBuilder().setType(featureType).build();
             }).collect(Collectors.toList());
             BatchAnnotateImagesRequest request = BatchAnnotateImagesRequest.newBuilder().addRequests(AnnotateImageRequest.newBuilder().addAllFeatures(featureList).setImageContext(ImageContext.getDefaultInstance()).setImage(img)).build();
@@ -86,7 +73,7 @@ public class LabelDetectionService implements LabelDetectionInterface {
             featureDto.setFeatures(imageLabels);
 
             featureDto.setMainFeature(object.getName());
-            log.info("Image Classification results: {}",imageLabels);
+            log.info("Image Classification results: {}",annotateImageResponses.toString());
             return featureDto;
         }catch (Exception ex){
             log.info("Image detection error: {}", ex.getMessage() );

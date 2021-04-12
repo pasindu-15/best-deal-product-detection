@@ -45,13 +45,13 @@ public class ProductManageService {
             FeatureDto featureDto = null;
             Boolean isDeleted = null;
             try {
-//                String imgPath = imageHandlerInter.decodeImage(img);
+//                String imgPath = imageHandlerInterface.decodeImage(img);
 ////
-////                featureDto = labelDetectionInterface.detectLabel(imgPath);
-////                isDeleted  = imageHandlerInter.deleteImg(imgPath);
-
+//                featureDto = labelDetectionInterface.detectLabel(imgPath);
+//                isDeleted  = imageHandlerInterface.deleteImg(imgPath);
+//
                 ByteString byteStrImg = imageHandlerInterface.decodeImageToByteString(img);
-                labelDetectionInterface.detectLabelFromByteStringImage(byteStrImg);
+                featureDto = labelDetectionInterface.detectLabelFromByteStringImage(byteStrImg);
 
 //                log.info("image: {} | features: {} | imageDeleted {}",imgPath,featureDto,isDeleted);
 
