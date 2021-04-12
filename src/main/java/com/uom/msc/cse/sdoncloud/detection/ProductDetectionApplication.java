@@ -8,7 +8,7 @@ public class ProductDetectionApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProductDetectionApplication.class, args);
-		System.out.println("Application Running...");
-	}
+		System.out.println("Application Running.wwdfgfhwfdsaf..");
+	} //janitha
 
 }
